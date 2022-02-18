@@ -10,6 +10,7 @@ import {EditComponent} from "./edit/edit.component";
 const routes: Routes = [
   {
     path: "",
+    component: HomeComponent,
     children: [
       {
         path: "add",
@@ -45,4 +46,4 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class PigsRoutingModule { }
+export class MoviesRoutingModule { }

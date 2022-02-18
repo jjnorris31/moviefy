@@ -4,9 +4,9 @@ import { AddComponent } from './pages/add/add.component';
 import { SearchComponent } from './pages/search/search.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ListComponent } from './pages/list/list.component';
-import {PigsRoutingModule} from "./pigs-routing.module";
+import {MoviesRoutingModule} from "./movies-routing.module";
 import { EditComponent } from './pages/edit/edit.component';
-
+import {MaterialModule} from "../material/material.module";
 
 
 @NgModule({
@@ -19,7 +19,8 @@ import { EditComponent } from './pages/edit/edit.component';
   ],
   imports: [
     CommonModule,
-    PigsRoutingModule,
+    MoviesRoutingModule,
+    MaterialModule,
   ]
 })
-export class PigsModule { }
+export class MoviesModule { }

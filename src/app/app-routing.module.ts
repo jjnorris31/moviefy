@@ -8,8 +8,8 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule),
   },
   {
-    path: "pigs",
-    loadChildren: () => import('./pigs/pigs.module').then(m => m.PigsModule),
+    path: "movies",
+    loadChildren: () => import('./movies/movies.module').then(m => m.MoviesModule),
   },
   {
     path: "404",
