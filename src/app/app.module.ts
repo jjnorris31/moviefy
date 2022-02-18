@@ -8,6 +8,7 @@ import {AuthModule} from "./auth/auth.module";
 import { NotFoundComponent } from './shared/not-found/not-found.component';
 import {AppRoutingModule} from "./app-routing.module";
 import {RouterModule} from "@angular/router";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {RouterModule} from "@angular/router";
   imports: [
     AppRoutingModule,
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialModule,
     RouterModule,

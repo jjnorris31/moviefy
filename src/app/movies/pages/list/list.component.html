@@ -1,1 +1,6 @@
 <p>list works!</p>
+<button (click)="getMovie()">get</button>
+
+<div *ngIf="movie">
+  {{movie | json}}
+</div>
