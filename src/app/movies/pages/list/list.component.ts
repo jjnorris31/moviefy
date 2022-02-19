@@ -9,17 +9,18 @@ import {Movie} from "../../../interfaces/movie";
 })
 export class ListComponent implements OnInit {
 
-  public movie!: Movie;
+  public movies: Movie[] = [];
+
+  public page: number = 1;
 
   constructor(private movieService: MoviesService) { }
 
   ngOnInit(): void {
   }
 
-
-  public getMovie() {
-    this.movieService.getMovieById("").subscribe((movie) => {
-      this.movie = movie;
+  public getPopularMovies() {
+    this.movieService.getPopularMovies(this.page).subscribe((popular) => {
+      this.movies = popular.results;
     })
   }
 

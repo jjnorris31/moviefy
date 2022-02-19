@@ -1,6 +1,6 @@
 <p>list works!</p>
-<button (click)="getMovie()">get</button>
+<button (click)="getPopularMovies()">get</button>
 
-<div *ngIf="movie">
-  {{movie | json}}
+<div *ngIf="movies.length > 0">
+  {{movies | json}}
 </div>
