@@ -11,11 +11,14 @@ export class ListComponent implements OnInit {
 
   public movies: Movie[] = [];
 
+  public imageEndpoint: string = "https://image.tmdb.org/t/p/w300";
+
   public page: number = 1;
 
   constructor(private movieService: MoviesService) { }
 
   ngOnInit(): void {
+    this.getPopularMovies()
   }
 
   public getPopularMovies() {
