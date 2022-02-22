@@ -4,6 +4,8 @@ import {Observable} from "rxjs";
 import {map, startWith, switchMap} from "rxjs/operators";
 import {MoviesService} from "../../../services/movies.service";
 import {Movie} from "../../../interfaces/movie";
+import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-search',
@@ -14,19 +16,30 @@ export class SearchComponent implements OnInit {
 
   searchMovie = new FormControl('');
   options = ["mary", "leo", "sofi"]
-  movies!: Movie[];
+  movies: Movie[] = [];
 
 
-  constructor(private movieService: MoviesService) { }
+  constructor(
+    private movieService: MoviesService,
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.searchMovie.valueChanges.pipe(
       switchMap(value => this.movieService.getMovieByName(value)),
-    ).subscribe((popular) => this.movies = popular.results);
+    ).subscribe((popular) => {
+      this.movies = popular.results.length === 0 ? [] : popular.results;
+    });
   }
 
   displayFn(movie: Movie): string {
-    return movie.original_title ?? '';
+    return movie && movie.original_title ? movie.original_title : '';
+  }
+
+  public async onMovieSelected(selectedEvent: MatAutocompleteSelectedEvent) {
+    if (selectedEvent.option.value) {
+      await this.router.navigate(['/movies', selectedEvent.option.value.id]);
+    }
   }
 
 }

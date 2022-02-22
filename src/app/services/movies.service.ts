@@ -23,8 +23,11 @@ export class MoviesService {
   }
 
   public getMovieByName(name: string) {
-    const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${environment.api_key}&query=${name}&page=1&language=en-US&page=1&include_adult=false`;
-    return this.httpClient.get<Popular>(endpoint);
-
+    if (name !== '') {
+      const endpoint = `https://api.themoviedb.org/3/search/movie?api_key=${environment.api_key}&query=${name}&page=1&language=en-US&page=1&include_adult=false`;
+      return this.httpClient.get<Popular>(endpoint);
+    } else {
+      return [];
+    }
   }
 }

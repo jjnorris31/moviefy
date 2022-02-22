@@ -4,8 +4,15 @@
        matInput
        [formControl]="searchMovie"
        [matAutocomplete]="auto">
-<mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
-  <mat-option *ngFor="let option of movies " [value]="option">
+<mat-autocomplete #auto="matAutocomplete"
+                  (optionSelected)="onMovieSelected($event)"
+                  [displayWith]="displayFn">
+  <mat-option *ngFor="let option of movies"
+              [value]="option">
     {{option.original_title}}
+  </mat-option>
+
+  <mat-option *ngIf="movies.length === 0" [value]="null">
+    No hay resultados
   </mat-option>
 </mat-autocomplete>
