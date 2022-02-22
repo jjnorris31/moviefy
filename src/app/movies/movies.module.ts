@@ -7,6 +7,7 @@ import { ListComponent } from './pages/list/list.component';
 import {MoviesRoutingModule} from "./movies-routing.module";
 import { EditComponent } from './pages/edit/edit.component';
 import {MaterialModule} from "../material/material.module";
+import { ViewComponent } from './pages/view/view.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import {MaterialModule} from "../material/material.module";
     HomeComponent,
     ListComponent,
     EditComponent,
+    ViewComponent,
   ],
   imports: [
     CommonModule,

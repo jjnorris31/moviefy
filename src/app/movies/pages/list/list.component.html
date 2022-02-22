@@ -1,9 +1,9 @@
-
 <div *ngIf="movies.length > 0">
   <mat-grid-list cols="5"
                  gutterSize="16"
                  rowHeight="550">
-    <mat-grid-tile *ngFor="let movie of movies">
+    <mat-grid-tile *ngFor="let movie of movies"
+                   [routerLink]="'/movies/' + movie.id">
       <div class="movie-item">
         <img [src]="imageEndpoint + movie.poster_path" alt="movie image" width="300px">
         <div class="movie-title">{{movie.title}}</div>

@@ -6,6 +6,7 @@ import {HomeComponent} from "./pages/home/home.component";
 import {ListComponent} from "./pages/list/list.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {EditComponent} from "./edit/edit.component";
+import {ViewComponent} from "./pages/view/view.component";
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
       {
         path: "edit/:id",
         component: EditComponent
+      },
+      {
+        path: ":id",
+        component: ViewComponent
       },
       {
         path: "**",

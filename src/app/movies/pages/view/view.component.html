@@ -1,0 +1,25 @@
+<mat-grid-list cols="4" rowHeight="450"
+               style="margin-top: 16px"
+               *ngIf="movie">
+  <mat-grid-tile>
+    <img [src]="imageEndpoint + movie.poster_path"
+         alt="movie image"
+         width="300px">
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <div style="height: 100%; width: 100%;">
+      <mat-grid-list cols="1">
+        <mat-grid-tile>
+          <div class="flex-column">
+            <span class="title">{{movie.title}}</span>
+            <span class="subtitle">{{movie.original_title}}</span>
+            <span class="another-info">{{movie.release_date | date}} | {{movie.status}} | {{movie.vote_average}}</span>
+            <span class="description">{{movie.overview}}</span>
+            <span class="another-info">Budget: {{movie.budget | currency}}</span>
+            <span class="another-info">Revenue: {{movie.revenue | currency}}</span>
+          </div>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>
