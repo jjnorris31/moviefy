@@ -1,1 +1,11 @@
-<p>search works!</p>
+<input type="text"
+       placeholder="Pick one"
+       aria-label="Number"
+       matInput
+       [formControl]="searchMovie"
+       [matAutocomplete]="auto">
+<mat-autocomplete #auto="matAutocomplete"  [displayWith]="displayFn">
+  <mat-option *ngFor="let option of movies " [value]="option">
+    {{option.original_title}}
+  </mat-option>
+</mat-autocomplete>

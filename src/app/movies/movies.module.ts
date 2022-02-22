@@ -8,6 +8,7 @@ import {MoviesRoutingModule} from "./movies-routing.module";
 import { EditComponent } from './pages/edit/edit.component';
 import {MaterialModule} from "../material/material.module";
 import { ViewComponent } from './pages/view/view.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { ViewComponent } from './pages/view/view.component';
   imports: [
     CommonModule,
     MoviesRoutingModule,
+    ReactiveFormsModule,
     MaterialModule,
   ]
 })
