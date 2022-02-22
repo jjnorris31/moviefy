@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Movie} from "../../../interfaces/movie";
 import {MoviesService} from "../../../services/movies.service";
 import {ActivatedRoute} from "@angular/router";
+import {switchMap} from "rxjs/operators";
 
 @Component({
   selector: 'app-view',
@@ -21,12 +22,9 @@ export class ViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.route.paramMap.subscribe(params => {
-      this.movieService.getMovie(params.get("id")!).subscribe((movie) => {
-        this.movie = movie;
-      });
-    });
+    this.route.params.pipe(
+      switchMap(({id}) => this.movieService.getMovie(id))
+    ).subscribe(movie => this.movie = movie);
   }
 
 }
