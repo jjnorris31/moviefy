@@ -2,7 +2,7 @@
                style="margin-top: 16px"
                *ngIf="movie">
   <mat-grid-tile>
-    <img [src]="imageEndpoint + movie.poster_path"
+    <img [src]="movie.poster_path | movieImage"
          alt="movie image"
          width="300px">
   </mat-grid-tile>

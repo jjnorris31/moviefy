@@ -7,6 +7,7 @@ import {ListComponent} from "./pages/list/list.component";
 import {SearchComponent} from "./pages/search/search.component";
 import {EditComponent} from "./edit/edit.component";
 import {ViewComponent} from "./pages/view/view.component";
+import {MyMoviesComponent} from "./pages/my-movies/my-movies.component";
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: "search",
         component: SearchComponent
+      },
+      {
+        path: "seen",
+        component: MyMoviesComponent
       },
       {
         path: "edit/:id",

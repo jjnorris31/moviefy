@@ -9,6 +9,8 @@ import { EditComponent } from './pages/edit/edit.component';
 import {MaterialModule} from "../material/material.module";
 import { ViewComponent } from './pages/view/view.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MyMoviesComponent } from './pages/my-movies/my-movies.component';
+import {MovieImagePipe} from "../pipes/movie-image.pipe";
 
 
 @NgModule({
@@ -19,12 +21,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ListComponent,
     EditComponent,
     ViewComponent,
+    MyMoviesComponent,
+    MovieImagePipe
   ],
   imports: [
     CommonModule,
     MoviesRoutingModule,
     ReactiveFormsModule,
     MaterialModule,
-  ]
+  ],
+
 })
 export class MoviesModule { }

@@ -6,6 +6,7 @@ import {MoviesService} from "../../../services/movies.service";
 import {Movie} from "../../../interfaces/movie";
 import {MatAutocompleteSelectedEvent} from "@angular/material/autocomplete";
 import {Router} from "@angular/router";
+import {DbService} from "../../../services/db.service";
 
 @Component({
   selector: 'app-search',
@@ -21,6 +22,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private movieService: MoviesService,
+    private dbService: DbService,
     private router: Router
   ) { }
 
@@ -38,6 +40,7 @@ export class SearchComponent implements OnInit {
 
   public async onMovieSelected(selectedEvent: MatAutocompleteSelectedEvent) {
     if (selectedEvent.option.value) {
+      await this.dbService.addMovie(selectedEvent.option.value);
       await this.router.navigate(['/movies', selectedEvent.option.value.id]);
     }
   }

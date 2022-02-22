@@ -13,9 +13,6 @@ export class ViewComponent implements OnInit {
 
   public movie!: Movie;
 
-  public imageEndpoint: string = "https://image.tmdb.org/t/p/w300";
-
-
   constructor(
     private movieService: MoviesService,
     private route: ActivatedRoute
