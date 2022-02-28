@@ -2,12 +2,17 @@
   <mat-grid-list cols="5"
                  gutterSize="16"
                  rowHeight="550">
-    <mat-grid-tile *ngFor="let movie of movies"
-                   [routerLink]="['/movies/', movie.id]">
+    <mat-grid-tile *ngFor="let movie of movies">
       <div class="movie-item">
-        <img alt="movie image" width="300px" [src]="movie.poster_path | movieImage">
+        <img alt="movie image"
+             [routerLink]="['/movies/', movie.id]"
+             width="300px"
+             [src]="movie.poster_path | movieImage">
         <div class="movie-title">{{movie.title}}</div>
         <div>{{movie.release_date | date:"yyyy"}}</div>
+        <div style="display: flex; justify-content: center">
+          <button mat-raised-button (click)="openDeleteDialog(movie)">Not seen</button>
+        </div>
       </div>
     </mat-grid-tile>
   </mat-grid-list>

@@ -65,7 +65,7 @@ export class DbService {
     });
   }
 
-  public deleteMovie(id: string) {
+  public deleteMovie(id: number) {
     return new Promise<void>(async (resolve, reject) => {
       let indexedDB = await this.openDatabase();
       let transaction = indexedDB.transaction("movies", "readwrite");

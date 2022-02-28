@@ -11,6 +11,7 @@ import { ViewComponent } from './pages/view/view.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MyMoviesComponent } from './pages/my-movies/my-movies.component';
 import {MovieImagePipe} from "../pipes/movie-image.pipe";
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {MovieImagePipe} from "../pipes/movie-image.pipe";
     EditComponent,
     ViewComponent,
     MyMoviesComponent,
-    MovieImagePipe
+    MovieImagePipe,
+    ConfirmationComponent
   ],
   imports: [
     CommonModule,
