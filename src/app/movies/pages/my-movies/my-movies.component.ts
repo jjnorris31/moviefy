@@ -14,7 +14,7 @@ export class MyMoviesComponent implements OnInit {
   constructor(private dbService: DbService) { }
 
   async ngOnInit() {
-    await this.dbService.getAllMovies();
+    this.movies = await this.dbService.getAllMovies();
   }
 
 }

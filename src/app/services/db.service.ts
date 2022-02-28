@@ -64,4 +64,22 @@ export class DbService {
       }
     });
   }
+
+  public deleteMovie(id: string) {
+    return new Promise<void>(async (resolve, reject) => {
+      let indexedDB = await this.openDatabase();
+      let transaction = indexedDB.transaction("movies", "readwrite");
+      let movies = transaction.objectStore("movies");
+
+      let deleteRequest = movies.delete(id);
+
+      deleteRequest.onsuccess = () => {
+        resolve(deleteRequest.result);
+      }
+
+      deleteRequest.onerror = () => {
+        reject(deleteRequest.error);
+      }
+    });
+  }
 }

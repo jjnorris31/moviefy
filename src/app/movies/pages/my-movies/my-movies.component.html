@@ -5,7 +5,7 @@
     <mat-grid-tile *ngFor="let movie of movies"
                    [routerLink]="['/movies/', movie.id]">
       <div class="movie-item">
-        <img alt="movie image" width="300px">
+        <img alt="movie image" width="300px" [src]="movie.poster_path | movieImage">
         <div class="movie-title">{{movie.title}}</div>
         <div>{{movie.release_date | date:"yyyy"}}</div>
       </div>
