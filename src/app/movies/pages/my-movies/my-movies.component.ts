@@ -3,6 +3,7 @@ import {Movie} from "../../../interfaces/movie";
 import {DbService} from "../../../services/db.service";
 import {MatDialog} from '@angular/material/dialog';
 import {ConfirmationComponent} from "../../components/confirmation/confirmation.component";
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -16,6 +17,7 @@ export class MyMoviesComponent implements OnInit {
   public selectedMovie!: Movie;
 
   constructor(private dbService: DbService,
+              private _matSnackBar: MatSnackBar,
               private matDialog: MatDialog) { }
 
   async ngOnInit() {
@@ -29,6 +31,7 @@ export class MyMoviesComponent implements OnInit {
       if (result) {
         await this.dbService.deleteMovie(this.selectedMovie.id);
         await this.getSeenMovies();
+        this.openSnackBar(`${this.selectedMovie.title} was removed`, "OK");
       }
     });
   }
@@ -41,4 +44,9 @@ export class MyMoviesComponent implements OnInit {
     this.movies = await this.dbService.getAllMovies();
   }
 
+  openSnackBar(message: string, action: string) {
+    this._matSnackBar.open(message, action, {
+      duration: 3000
+    });
+  }
 }
