@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
 
-  ngOnInit(): void {
+  constructor(private router: Router,
+              private authService: AuthService) { }
+
+  async ngOnInit() {
+  }
+
+  public async login() {
+    await this.authService.getUser(1);
+    if (this.authService.user) {
+      await this.router.navigate(['movies/list']);
+    }
   }
 
 }

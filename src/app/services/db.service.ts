@@ -10,7 +10,7 @@ export class DbService {
 
   public openDatabase() {
     return new Promise<IDBDatabase>(function (resolve, reject) {
-      let request = window.indexedDB.open("db", 1);
+      let request = window.indexedDB.open("db", 2);
 
       request.onupgradeneeded = () => {
         let indexedDB = request.result;

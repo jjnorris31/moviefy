@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import {AuthRoutingModule} from "./auth-routing.module";
+import {MatGridListModule} from "@angular/material/grid-list";
+import {MatButtonModule} from "@angular/material/button";
 
 
 @NgModule({
@@ -12,7 +14,9 @@ import {AuthRoutingModule} from "./auth-routing.module";
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    MatGridListModule,
+    MatButtonModule
   ]
 })
 export class AuthModule { }
