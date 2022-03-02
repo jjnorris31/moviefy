@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from "../interfaces/user.interface";
+import {Observable, of} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,14 @@ export class AuthService {
     return {...this._user};
   }
 
-  public openDatabase() {
+  public verifyAuth(): Observable<boolean> {
+    if (!localStorage.getItem("id")) {
+      return of(false);
+    }
+    return of(true);
+  }
+
+  private openDatabase() {
     return new Promise<IDBDatabase>(function (resolve, reject) {
       let request = window.indexedDB.open("db", 2);
 
@@ -37,7 +45,17 @@ export class AuthService {
     });
   }
 
-  public getUser(id: number) {
+  public async login() {
+    await this.getUser(1);
+    window.localStorage.setItem("id", JSON.stringify(this.user.id));
+  }
+
+  public logout() {
+    window.localStorage.removeItem("id");
+    this._user = undefined;
+  }
+
+  private getUser(id: number) {
     return new Promise<User>(async (resolve, reject) => {
       let indexedDB = await this.openDatabase();
       let transaction = indexedDB.transaction("users", "readwrite");
@@ -56,7 +74,7 @@ export class AuthService {
     });
   }
 
-  public addUser(user: User) {
+  private addUser(user: User) {
     return new Promise<void>(async (resolve, reject) => {
       let database = await this.openDatabase();
       let transaction = database.transaction("users", "readwrite");

@@ -17,10 +17,8 @@ export class LoginComponent implements OnInit {
   }
 
   public async login() {
-    await this.authService.getUser(1);
-    if (this.authService.user) {
-      await this.router.navigate(['movies/list']);
-    }
+    await this.authService.login();
+    await this.router.navigate(['movies/list']);
   }
 
 }
